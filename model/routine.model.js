@@ -10,4 +10,4 @@ const routineSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.module("Routine", routineSchema);
+module.exports = mongoose.model("Routine", routineSchema);
