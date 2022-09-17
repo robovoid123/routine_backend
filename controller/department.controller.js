@@ -1,73 +1,54 @@
-const Model = require('../model/department.model');
+const departmentService = require("../service/department.service");
 
-const departmentAdd = async (req, res) => {
-    const data = new Model({
-        name: req.body.name,
-    })
+const departmentController = {
+  add: async (req, res) => {
     try {
-        const dataToSave = await data.save();
-        res.status(200).json(dataToSave)
+      const dataToSave = await departmentService.create(req.body);
+      res.status(200).json(dataToSave);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
     }
-    catch (error) {
-        res.status(400).json({ message: error.message })
-    }
-}
+  },
 
-const departmentGetAll = async (req, res) => {
+  getAll: async (req, res) => {
     try {
-        const data = await Model.find();
-        res.json(data)
+      const data = await departmentService.getAll();
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+  },
 
-//Get by ID Method
-const departmentGetId = async (req, res) => {
+  getByID: async (req, res) => {
     try {
-        const data = await Model.findById(req.params.id);
-        res.json(data)
+      const data = await departmentService.getByID(req.params.id);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+  },
 
-//Update by ID Method
-const departmentUpdate =  async (req, res) => {
+  update: async (req, res) => {
     try {
-        const id = req.params.id;
-        const updatedData = req.body;
-        const options = { new: true };
+      const result = await departmentService.update(req.params.id, req.body);
 
-        const result = await Model.findByIdAndUpdate(
-            id, updatedData, options
-        )
-
-        res.send(result)
+      res.send(result);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+  },
 
-//Delete by ID Method
-const departmentDelete = async (req, res) => {
+  delete: async (req, res) => {
     try {
-        const id = req.params.id;
-        const data = await Model.findByIdAndDelete(id)
-        res.send(`Document with ${data.name} has been deleted..`)
-    }
-    catch (error) {
-        res.status(400).json({ message: error.message })
-    }
-}
+      const departmentInDB = await templateService.delete(req.params.id);
 
-module.exports = {
-  departmentAdd,
-  departmentGetAll,
-  departmentGetId,
-  departmentUpdate,
-  departmentDelete
-}
+      res.send(`Document with ${departmentInDB.name} has been deleted..`);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+  // TODO: addSubject
+  // TODO: removeSubject
+};
+
+module.exports = departmentController;

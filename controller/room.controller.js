@@ -1,74 +1,52 @@
-const Model = require('../model/room.model');
+const roomService = require("../service/room.service");
 
-const roomAdd = async (req, res) => {
-    const data = new Model({
-        room_number: req.body.room_number,
-        available: req.body.available,
-    })
+const roomController = {
+  add: async (req, res) => {
     try {
-        const dataToSave = await data.save();
-        res.status(200).json(dataToSave)
+      const dataToSave = await roomService.create(req.body);
+      res.status(200).json(dataToSave);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
     }
-    catch (error) {
-        res.status(400).json({ message: error.message })
-    }
-}
+  },
 
-const roomGetAll = async (req, res) => {
+  getAll: async (req, res) => {
     try {
-        const data = await Model.find();
-        res.json(data)
+      const data = await roomService.getAll();
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+  },
 
-//Get by ID Method
-const roomGetId = async (req, res) => {
+  getByID: async (req, res) => {
     try {
-        const data = await Model.findById(req.params.id);
-        res.json(data)
+      const data = await roomService.getByID(req.params.id);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+  },
 
-//Update by ID Method
-const roomUpdate =  async (req, res) => {
+  update: async (req, res) => {
     try {
-        const id = req.params.id;
-        const updatedData = req.body;
-        const options = { new: true };
+      const result = await roomService.update(req.params.id, req.body);
 
-        const result = await Model.findByIdAndUpdate(
-            id, updatedData, options
-        )
-
-        res.send(result)
+      res.send(result);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+  },
 
-//Delete by ID Method
-const roomDelete = async (req, res) => {
+  delete: async (req, res) => {
     try {
-        const id = req.params.id;
-        const data = await Model.findByIdAndDelete(id)
-        res.send(`Document with ${data.name} has been deleted..`)
-    }
-    catch (error) {
-        res.status(400).json({ message: error.message })
-    }
-}
+      const roomInDB = await roomService.delete(req.params.id);
 
-module.exports = {
-  roomAdd,
-  roomGetAll,
-  roomGetId,
-  roomUpdate,
-  roomDelete
-}
+      res.send(`Document with ${roomInDB.name} has been deleted..`);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+};
+
+module.exports = roomController;

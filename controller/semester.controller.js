@@ -1,9 +1,9 @@
-const subjectService = require("../service/subject.service");
+const semesterService = require("../service/semester.service");
 
-const subjectController = {
+const semesterController = {
   add: async (req, res) => {
     try {
-      const dataToSave = await subjectService.create(req.body);
+      const dataToSave = await semesterService.create(req.body);
       res.status(200).json(dataToSave);
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -12,7 +12,7 @@ const subjectController = {
 
   getAll: async (req, res) => {
     try {
-      const data = await subjectService.getAll();
+      const data = await semesterService.getAll();
       res.json(data);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -21,7 +21,7 @@ const subjectController = {
 
   getByID: async (req, res) => {
     try {
-      const data = await subjectService.getByID(req.params.id);
+      const data = await semesterService.getByID(req.params.id);
       res.json(data);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -30,7 +30,7 @@ const subjectController = {
 
   update: async (req, res) => {
     try {
-      const result = await subjectService.update(req.params.id, req.body);
+      const result = await semesterService.update(req.params.id, req.body);
 
       res.send(result);
     } catch (error) {
@@ -40,13 +40,13 @@ const subjectController = {
 
   delete: async (req, res) => {
     try {
-      const subjectInDB = await subjectService.delete(req.params.id);
+      const semesterInDB = await semesterService.delete(req.params.id);
 
-      res.send(`Document with ${subjectInDB.name} has been deleted..`);
+      res.send(`Document with ${semesterInDB.name} has been deleted..`);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
   },
 };
 
-module.exports = subjectController;
+module.exports = semesterController;
