@@ -1,8 +1,32 @@
+const Joi = require("@hapi/joi");
+
 const subjectService = require("../service/subject.service");
+
+const subjectAddSchema = Joi.object({
+  name: Joi.string().required(),
+  alias: Joi.string().required(),
+  creditHour: Joi.number().required(),
+  lecture: Joi.number().required(),
+  practical: Joi.number().required(),
+});
+
+const subjectUpdateSchema = Joi.object({
+  name: Joi.string().optional(),
+  alias: Joi.string().optional(),
+  creditHour: Joi.number().optional(),
+  lecture: Joi.number().optional(),
+  practical: Joi.number().optional(),
+});
 
 const subjectController = {
   add: async (req, res) => {
     try {
+      const { error } = await subjectAddSchema.validateAsync(req.body);
+
+      if (error) {
+        res.status(400).json(error.details[0].message);
+      }
+
       const dataToSave = await subjectService.create(req.body);
       res.status(200).json(dataToSave);
     } catch (error) {
@@ -30,6 +54,12 @@ const subjectController = {
 
   update: async (req, res) => {
     try {
+      const { error } = await subjectUpdateSchema.validateAsync(req.body);
+
+      if (error) {
+        res.status(400).json(error.details[0].message);
+      }
+
       const result = await subjectService.update(req.params.id, req.body);
 
       res.send(result);
