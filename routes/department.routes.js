@@ -1,11 +1,11 @@
-const router = require('express').Router()
+const router = require("express").Router();
 
-const departmentController = require('../controller/department.controller')
+const departmentController = require("../controller/department.controller");
 
-router.post("/add", departmentController.departmentAdd)
-router.get("/getAll", departmentController.departmentGetAll)
-router.get("/getId/:id", departmentController.departmentGetId)
-router.patch("/update", departmentController.departmentUpdate)
-router.delete("/delete/:id", departmentController.departmentDelete)
+router.post("/add", departmentController.add);
+router.get("/getAll", departmentController.getAll);
+router.get("/getId/:id", departmentController.getByID);
+router.patch("/update", departmentController.update);
+router.delete("/delete/:id", departmentController.delete);
 
-module.exports = { departmentRouter: router }
+module.exports = { departmentRouter: router };

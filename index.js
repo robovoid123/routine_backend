@@ -1,9 +1,8 @@
+require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const mongoString = process.env.MONGO_URI;
-
-require("dotenv").config();
 
 const connectionParams = {
   useNewUrlParser: true,

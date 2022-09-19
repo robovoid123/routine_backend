@@ -54,24 +54,6 @@ const departmentService = {
       throw new Error(error);
     }
   },
-  /**
-   * adds subject to department
-   *
-   * @param {Number} id
-   * @param {Number} subjectID
-   *
-   * @returns {Number} successfully added subjectID
-   */
-  addSubject: async (id, subjectID) => {},
-  /**
-   * removes subject from department
-   *
-   * @param {Number} id
-   * @param {Number} subjectID
-   *
-   * @returns {Number} successfully removed subjectID
-   */
-  removeSubject: async (id, subjectID) => {},
 };
 
 module.exports = departmentService;

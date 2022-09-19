@@ -1,11 +1,11 @@
-const router = require('express').Router()
+const router = require("express").Router();
 
-const roomController = require('../controller/room.controller')
+const roomController = require("../controller/room.controller");
 
-router.post("/add", roomController.roomAdd)
-router.get("/getAll", roomController.roomGetAll)
-router.get("/getId/:id", roomController.roomGetId)
-router.patch("/update", roomController.roomUpdate)
-router.delete("/delete/:id", roomController.roomDelete)
+router.post("/add", roomController.add);
+router.get("/getAll", roomController.getAll);
+router.get("/getId/:id", roomController.getByID);
+router.patch("/update", roomController.update);
+router.delete("/delete/:id", roomController.delete);
 
-module.exports = { roomRouter: router }
+module.exports = { roomRouter: router };

@@ -19,7 +19,7 @@ const subjectSchema = new mongoose.Schema({
   },
   alias: {
     required: true,
-    type: Number,
+    type: String,
   },
 });
 
