@@ -1,4 +1,15 @@
+const Joi = require("@hapi/joi");
+
 const departmentService = require("../service/department.service");
+
+const checkConflictSchema = Joi.object({
+  departmentName: Joi.string().required(),
+  semester: Joi.string().required(),
+  subjectAlias: Joi.string().required(),
+  teacherAlias: Joi.string().required(),
+  weekDayIdx: Joi.number().required(),
+  timeSlotIdx: Joi.number().required(),
+});
 
 const departmentController = {
   add: async (req, res) => {
@@ -47,8 +58,33 @@ const departmentController = {
       res.status(400).json({ message: error.message });
     }
   },
-  // TODO: addSubject
-  // TODO: removeSubject
+  addRoutine: async (req, res) => {
+    try {
+      await departmentService.addRoutine({
+        ...res.body,
+        deptID: res.params.id,
+      });
+
+      res.send("Successfully added routine");
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
+  checkConflict: async (req, res) => {
+    try {
+      const { error } = await checkConflictSchema.validateAsync(req.body);
+
+      if (error) return res.status(400).send(error.details[0].message);
+
+      if (await departmentService.checkConflict(req.body))
+        return res.send("there is a conflict");
+
+      return res.send("there is no conflict");
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = departmentController;

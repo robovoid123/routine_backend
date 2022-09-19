@@ -23,8 +23,7 @@ const userRegister = async (req, res) => {
 
     //   IF ERROR EXISTS THEN SEND BACK THE ERROR
     if (error) {
-      res.status(400).send(error.details[0].message);
-      return;
+      return res.status(400).send(error.details[0].message);
     } else {
       //CHECKING IF USER EMAIL ALREADY EXISTS
       const emailExist = await User.findOne({ email: req.body.email });
