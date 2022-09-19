@@ -36,7 +36,6 @@ const userRegister = async (req, res) => {
       //HASHING THE PASSWORD
 
       const salt = await bcrypt.genSalt(10);
-      console.log(req.body.password);
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
       //ON PROCESS OF ADDING NEW USER
