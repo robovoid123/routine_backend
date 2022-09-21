@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const teacherSchema = new mongoose.Schema({
   name: {
     required: true,
+    trim: true,
     type: String,
   },
   workload: {
@@ -15,6 +16,10 @@ const teacherSchema = new mongoose.Schema({
     enum: ["full-time", "part-time"],
     default: "full-time",
   },
+  subjects: {
+    type: [mongoose.Types.ObjectId],
+    ref: "Subject",
+  },
   startTime: {
     type: String,
   },
@@ -24,6 +29,7 @@ const teacherSchema = new mongoose.Schema({
   initial: {
     required: true,
     type: String,
+    unique: true,
   },
 });
 

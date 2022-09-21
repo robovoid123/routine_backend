@@ -284,7 +284,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"IT\",\n    \"subjects\": [\n        {\n            \"subjectID\": \"id\",\n            \"teacherID\": \"id\",\n            \"semester\": \"1\"\n        }\n    ]\n}",
+							"raw": "{\n    \"name\": \"IT\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -299,6 +299,198 @@
 							"path": [
 								"departments",
 								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Smth else\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/departments/update/632ab6197b4166e6b20320b8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"update",
+								"632ab6197b4166e6b20320b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/departments/delete/632ab6197b4166e6b20320b8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"delete",
+								"632ab6197b4166e6b20320b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Departments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"IT\",\n    \"subjects\": [\n        {\n            \"subjectID\": \"id\",\n            \"teacherID\": \"id\",\n            \"semester\": \"1\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/departments/getAll",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Subjects To Department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subjects\": [\n        {\n            \"subjectID\": \"id\",\n            \"semester\": \"1\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/departments/addSubjects/632ab6197b4166e6b20320b8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"addSubjects",
+								"632ab6197b4166e6b20320b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Teacher To Subject",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subjectID\": \"id\",\n    \"teacherID\": \"id\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/departments/assignTeacher/632ab6197b4166e6b20320b8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments",
+								"assignTeacher",
+								"632ab6197b4166e6b20320b8"
 							]
 						}
 					},

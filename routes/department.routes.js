@@ -7,6 +7,8 @@ router.get("/getAll", departmentController.getAll);
 router.get("/getId/:id", departmentController.getByID);
 router.patch("/update/:id", departmentController.update);
 router.delete("/delete/:id", departmentController.delete);
+router.post("/addSubjects/:id", departmentController.addSubjects);
+router.post("/assignTeacher/:id", departmentController.assignTeacherToSubject);
 router.post("/addRoutine/:id", departmentController.addRoutine);
 
 module.exports = { departmentRouter: router };

@@ -15,7 +15,7 @@
     "name": "Ashim Khadka",
     "workload": 20,
     "teacher_initial": "AK",
-    "subject": ["MWC", "PST"]
+    "subject": ["MWC", "RTS"]
   },
   {
     "name": "Himal Acharya",
@@ -27,7 +27,7 @@
     "name": "Subash Manandhar",
     "workload": 20,
     "teacher_initial": "SMD",
-    "subject": ["DBMS", "C", "AOS"]
+    "subject": ["DBMS", "C", "AOS", "SNM"]
   },
   {
     "name": "Chabbi Siwakoti",
@@ -69,7 +69,7 @@
     "name": "Ramu Aryan Pandey",
     "workload": 20,
     "teacher_initial": "RAP",
-    "subject": ["WT"]
+    "subject": ["WT", "MALP", "MMS"]
   },
   {
     "name": "Satish Kumar Karn",
@@ -87,7 +87,7 @@
     "name": "Madan Kadariya",
     "workload": 20,
     "teacher_initial": "MKD",
-    "subject": ["DSA", "NP", "AOS"]
+    "subject": ["DSA", "NP", "AOS", "DS"]
   },
   {
     "name": "Mahesh Neupane",
@@ -111,7 +111,7 @@
     "name": "Roshan Koju",
     "workload": 20,
     "teacher_initial": "RKJ",
-    "subject": ["ICTPM"]
+    "subject": ["ICTPM", "SPIT"]
   },
   {
     "name": "Rishi Kant Marseni",
@@ -147,18 +147,48 @@
     "name": "Bhushan Thapa",
     "workload": 20,
     "teacher_initial": "BST",
-    "subject": ["JAVA", "PQT"]
+    "subject": ["JAVA", "RTS", "SPM"]
+  },
+  {
+    "name": "Govind Singh",
+    "workload": 20,
+    "teacher_initial": "GS",
+    "subject": ["JAVA", "SQL"]
   },
   {
     "name": "Chandra Prakash Bhatta",
     "workload": 20,
     "teacher_initial": "CRB",
-    "subject": ["MFCS", "IS"]
+    "subject": ["MFCS", "IS", "SP", "AINN"]
   },
   {
     "name": "Nipesh Shrestha",
     "workload": 20,
     "teacher_initial": "NS",
-    "subject": ["INTS", "EDR"]
+    "subject": ["INTS", "IPPR", "OODM", "AINN"]
+  },
+  {
+    "name": "Pradeep Bhatta",
+    "workload": 20,
+    "teacher_initial": "PRB",
+    "subject": ["EDR"]
+  },
+  {
+    "name": "Umesh Pandeya",
+    "workload": 20,
+    "teacher_initial": "UPA",
+    "subject": ["EAPD", "OOSD"]
+  },
+  {
+    "name": "Nabraj Neupane",
+    "workload": 20,
+    "teacher_initial": "NRN",
+    "subject": ["MTHI", "MTHIV", "NM"]
+  },
+  {
+    "name": "Uttam Pokherel",
+    "workload": 20,
+    "teacher_initial": "UTP",
+    "subject": ["PST", "PQT"]
   }
 ]

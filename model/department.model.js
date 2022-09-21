@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const departmentSchema = new mongoose.Schema({
   name: {
     required: true,
+    trim: true,
     type: String,
   },
   subjects: {
@@ -13,6 +14,7 @@ const departmentSchema = new mongoose.Schema({
         teacher: { type: mongoose.Types.ObjectId, ref: "Teacher" },
         semester: {
           type: Number,
+          /* [1,2,3,4,5,6,7,8] */
           enum: [...Array(8).keys()].map((i) => i + 1),
         },
       },

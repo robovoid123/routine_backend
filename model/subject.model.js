@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const subjectSchema = new mongoose.Schema({
   name: {
     required: true,
+    trim: true,
     type: String,
   },
   creditHour: {
@@ -20,6 +21,7 @@ const subjectSchema = new mongoose.Schema({
   alias: {
     required: true,
     type: String,
+    unique: true,
   },
 });
 

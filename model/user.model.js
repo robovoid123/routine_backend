@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   fname: {
     type: String,
+    trim: true,
     required: true,
     min: 6,
     max: 255,
   },
   lname: {
     type: String,
+    trim: true,
     required: true,
     min: 6,
     max: 255,
