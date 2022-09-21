@@ -47,6 +47,44 @@
 					"response": []
 				},
 				{
+					"name": "Update Subject",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"MathII\",\n  \"alias\": \"MTHII\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/subjects/update/63273fb227821ea3b7a880a4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subjects",
+								"update",
+								"63273fb227821ea3b7a880a4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get All Subjects",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -254,13 +292,133 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/departments/addSubjects",
+							"raw": "{{url}}/departments/add",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"departments",
-								"addSubjects"
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "Update Teacher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jaden Dode\",\n    \"initial\": \"JD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/teachers/update/632a9592b89d41289232f6a1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"teachers",
+								"update",
+								"632a9592b89d41289232f6a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Teacher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Dode\",\n    \"initial\": \"JD\",\n    \"workload\": 2,\n    \"type\": \"full-time\",\n    \"startTime\": \"10AM\",\n    \"endTime\": \"4PM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/teachers/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"teachers",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Teachers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzI3MzdkOTI1ZjhhM2QxMWY4OTU2NTAiLCJpYXQiOjE2NjM1MTQ3NjUsImV4cCI6MTY2Mzc3Mzk2NX0.hXSasoUIl2oH919tomGzk7phtxML3FDjtVETr2hh5ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"IT\",\n    \"subjects\": [\n        {\n            \"subjectID\": \"id\",\n            \"teacherID\": \"id\",\n            \"semester\": \"1\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/teachers/getAll",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"teachers",
+								"getAll"
 							]
 						}
 					},
