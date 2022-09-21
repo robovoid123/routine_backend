@@ -11,7 +11,10 @@ const departmentSchema = new mongoose.Schema({
       {
         subject: { type: mongoose.Types.ObjectId, ref: "Subject" },
         teacher: { type: mongoose.Types.ObjectId, ref: "Teacher" },
-        semester: { type: String },
+        semester: {
+          type: Number,
+          enum: [...Array(8).keys()].map((i) => i + 1),
+        },
       },
     ],
   },

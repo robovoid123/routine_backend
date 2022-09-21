@@ -2,6 +2,28 @@ const Joi = require("@hapi/joi");
 
 const departmentService = require("../service/department.service");
 
+const departmentAddSchema = Joi.object({
+  name: Joi.string().required(),
+  subjects: Joi.array().items(
+    Joi.object().keys({
+      subject: Joi.string(),
+      teacher: Joi.string(),
+      semester: Joi.number(),
+    })
+  ),
+});
+
+const departmentUpdateSchema = Joi.object({
+  name: Joi.string().optional(),
+  subjects: Joi.array().items(
+    Joi.object().keys({
+      subject: Joi.string(),
+      teacher: Joi.string(),
+      semester: Joi.number(),
+    })
+  ),
+});
+
 const checkConflictSchema = Joi.object({
   departmentName: Joi.string().required(),
   semester: Joi.string().required(),
@@ -14,6 +36,12 @@ const checkConflictSchema = Joi.object({
 const departmentController = {
   add: async (req, res) => {
     try {
+      const { error } = await departmentAddSchema.validateAsync(req.body);
+
+      if (error) {
+        res.status(400).json(error.details[0].message);
+      }
+
       const dataToSave = await departmentService.create(req.body);
       res.status(200).json(dataToSave);
     } catch (error) {
@@ -41,6 +69,12 @@ const departmentController = {
 
   update: async (req, res) => {
     try {
+      const { error } = await departmentUpdateSchema.validateAsync(req.body);
+
+      if (error) {
+        res.status(400).json(error.details[0].message);
+      }
+
       const result = await departmentService.update(req.params.id, req.body);
 
       res.send(result);
