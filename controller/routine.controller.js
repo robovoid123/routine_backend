@@ -1,3 +1,4 @@
+const { genRoutine } = require("../algorithm");
 const routineService = require("../service/routine.service");
 
 const routineController = {
@@ -44,6 +45,31 @@ const routineController = {
 
       res.send(`Document with ${routineInDB.name} has been deleted..`);
     } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
+  //   {
+  //   IT: {
+  //     '1': { morning: [Array], day: [Array] },
+  //     '3': { morning: [Array], day: [Array] },
+  //     '5': { morning: [Array], day: [Array] },
+  //     '7': { morning: [Array], day: [Array] }
+  //   },
+  //   SE: {
+  //     '1': { morning: [Array], day: [Array] },
+  //     '3': { morning: [Array], day: [Array] },
+  //     '5': { morning: [Array], day: [Array] },
+  //     '7': { morning: [Array], day: [Array] }
+  //   }
+  // }
+  generate: async (req, res) => {
+    try {
+      const routines = await genRoutine();
+
+      res.json(routines);
+    } catch (error) {
+      console.log(error);
       res.status(400).json({ message: error.message });
     }
   },

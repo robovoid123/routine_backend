@@ -1,7 +1,3 @@
-const {
-  generateEmptyRoutine,
-} = require("../algorithm/lib/generateEmptyRoutine");
-const { checkIsConflict } = require("../algorithm/lib/checkConflict");
 const DepartmentModel = require("../model/department.model");
 
 const departmentPopulateObj = [
@@ -183,33 +179,6 @@ const departmentService = {
       await departmentInDB.save();
 
       return true;
-    } catch (error) {
-      throw new Error(error);
-    }
-  },
-  checkConflict: async ({
-    departmentName,
-    semester,
-    subjectAlias,
-    teacherAlias,
-    weekDayIdx,
-    timeSlotIdx,
-  }) => {
-    try {
-      const departmentsInDB = await DepartmentModel.find().populate({
-        path: "routines.routine",
-        model: "Routine",
-      });
-
-      return checkIsConflict(
-        departmentsInDB,
-        departmentName,
-        semester,
-        subjectAlias,
-        teacherAlias,
-        weekDayIdx,
-        timeSlotIdx
-      );
     } catch (error) {
       throw new Error(error);
     }

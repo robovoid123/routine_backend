@@ -1,4 +1,9 @@
+const fs = require("fs");
+const util = require("util");
+const readFile = util.promisify(fs.readFile);
+
 const Joi = require("@hapi/joi");
+const { genRoutine } = require("../algorithm");
 const teacherService = require("../service/teacher.service");
 
 const teacherAddSchema = Joi.object({
@@ -74,6 +79,35 @@ const teacherController = {
       const teacherInDB = await teacherService.delete(req.params.id);
 
       res.send(`Document with ${teacherInDB.name} has been deleted..`);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+  getRoutine: async (req, res) => {
+    try {
+      // await genRoutine();
+
+      const teacherSlotAssinged = JSON.parse(
+        await readFile(
+          `${process.cwd()}/algorithm/temp/teacher_slot_assigned.json`,
+          "utf-8"
+        )
+      );
+
+      const teacherInDB = await teacherService.getByID(req.params.id);
+
+      if (!teacherInDB)
+        throw new Error(`teacher with id ${req.params.id} not found`);
+
+      const currentTeacherRoutine = teacherSlotAssinged
+        .filter((ts) => ts.teacher === teacherInDB.name)
+        .map((tr) => ({
+          time: tr.time,
+          day: tr.day,
+          subject: tr.subject,
+        }));
+
+      res.json(currentTeacherRoutine);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }

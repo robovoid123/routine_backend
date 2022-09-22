@@ -7,5 +7,6 @@ router.get("/getAll", routineController.getAll);
 router.get("/getId/:id", routineController.getByID);
 router.patch("/update/:id", routineController.update);
 router.delete("/delete/:id", routineController.delete);
+router.post("/generate", routineController.generate);
 
 module.exports = { routineRouter: router };

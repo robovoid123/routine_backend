@@ -7,5 +7,6 @@ router.get("/getAll", teacherController.getAll);
 router.get("/getId/:id", teacherController.getByID);
 router.patch("/update/:id", teacherController.update);
 router.delete("/delete/:id", teacherController.delete);
+router.get("/getRoutine/:id", teacherController.getRoutine);
 
 module.exports = { teacherRouter: router };
