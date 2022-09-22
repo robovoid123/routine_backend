@@ -88,7 +88,7 @@ const departmentService = {
       }
 
       const options = { new: true };
-      const departmentInDB = await DepartmentModel.findOneAndUpdate(
+      const departmentInDB = await DepartmentModel.findByIdAndUpdate(
         id,
         { ...data },
         options

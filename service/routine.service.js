@@ -17,13 +17,6 @@ const routineService = {
   },
   create: async (data) => {
     try {
-      const routineInDB = await RoutineModel.findOne({
-        name: data.name,
-        alias: data.alias,
-      });
-
-      if (routineInDB) throw new Error("routine already exists");
-
       const newRoutine = new routineModel({ ...data });
       await newRoutine.save();
 
@@ -35,7 +28,7 @@ const routineService = {
   update: async (id, data) => {
     try {
       const options = { new: true };
-      const routineInDB = await RoutineModel.findOneAndUpdate(
+      const routineInDB = await RoutineModel.findByIdAndUpdate(
         id,
         { ...data },
         options

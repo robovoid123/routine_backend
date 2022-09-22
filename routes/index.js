@@ -9,10 +9,10 @@ const { routineRouter } = require("./routine.routes");
 
 const verify = require("../middleware/auth.middleware");
 
-router.use("/teachers", verify, teacherRouter);
-router.use("/subjects", verify, subjectRouter);
-router.use("/departments", verify, departmentRouter);
-router.use("/rooms", verify, roomRouter);
+router.use("/teachers", verify(), teacherRouter);
+router.use("/subjects", verify(), subjectRouter);
+router.use("/departments", verify(), departmentRouter);
+router.use("/rooms", verify(), roomRouter);
 router.use("/users", userRouter);
 router.use("/routines", verify, routineRouter);
 

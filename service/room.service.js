@@ -18,13 +18,12 @@ const roomService = {
   create: async (data) => {
     try {
       const roomInDB = await RoomModel.findOne({
-        name: data.name,
-        alias: data.alias,
+        roomNumber: data.roomNumber,
       });
 
       if (roomInDB) throw new Error("room already exists");
 
-      const newRoom = new roomModel({ ...data });
+      const newRoom = new RoomModel({ ...data });
       await newRoom.save();
 
       return newRoom;
@@ -35,7 +34,7 @@ const roomService = {
   update: async (id, data) => {
     try {
       const options = { new: true };
-      const roomInDB = await RoomModel.findOneAndUpdate(
+      const roomInDB = await RoomModel.findByIdAndUpdate(
         id,
         { ...data },
         options

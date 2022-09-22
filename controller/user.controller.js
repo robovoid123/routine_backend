@@ -11,6 +11,7 @@ const registerSchema = Joi.object({
   lname: Joi.string().min(3).required(),
   email: Joi.string().email().min(6).required(),
   password: Joi.string().min(6).required(),
+  role: Joi.string(),
 });
 
 //SIGNUP USER
@@ -45,12 +46,13 @@ const userRegister = async (req, res) => {
         lname: req.body.lname,
         email: req.body.email,
         password: hashedPassword,
+        role: req.body.role,
       });
 
       //NEW USER IS ADDED
 
       const saveUser = await user.save();
-      res.status(200).send("user created");
+      res.status(200).json(saveUser);
     }
   } catch (error) {
     res.status(500).send(error);

@@ -45,7 +45,7 @@ const subjectService = {
   update: async (id, data) => {
     try {
       const options = { new: true };
-      const subjectInDB = await SubjectModel.findOneAndUpdate(
+      const subjectInDB = await SubjectModel.findByIdAndUpdate(
         id,
         { ...data },
         options

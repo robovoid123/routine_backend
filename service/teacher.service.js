@@ -19,7 +19,7 @@ const teacherService = {
     try {
       const teacherInDB = await TeacherModel.findOne({
         name: data.name,
-        alias: data.alias,
+        initial: data.alias,
       });
 
       if (teacherInDB) throw new Error("teacher already exists");
@@ -35,7 +35,7 @@ const teacherService = {
   update: async (id, data) => {
     try {
       const options = { new: true };
-      const teacherInDB = await TeacherModel.findOneAndUpdate(
+      const teacherInDB = await TeacherModel.findByIdAndUpdate(
         id,
         { ...data },
         options

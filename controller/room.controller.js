@@ -42,7 +42,7 @@ const roomController = {
     try {
       const roomInDB = await roomService.delete(req.params.id);
 
-      res.send(`Document with ${roomInDB.name} has been deleted..`);
+      res.send(`Document with ${roomInDB.roomNumber} has been deleted..`);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
